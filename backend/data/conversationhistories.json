@@ -1,0 +1,13 @@
+[
+  {
+    "_id": "ch_mnvyk07sg",
+    "userId": "u_student",
+    "userMessage": "Recommend a course for a beginner programmer.",
+    "aiResponse": "Welcome to programming! For a beginner, I highly recommend starting with 'Python Fundamentals for AI' if you are interested in AI and data science, or 'HTML, CSS & JavaScript Fundamentals' if web development is your goal. Both courses are designed with zero prerequisites and will build your confidence quickly!",
+    "recommendedCourses": [
+      "c1",
+      "c4"
+    ],
+    "timestamp": "2026-06-18T12:29:51.535Z"
+  }
+]

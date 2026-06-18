@@ -1,0 +1,199 @@
+[
+  {
+    "_id": "u_admin",
+    "name": "EduFlick Admin",
+    "email": "admin@eduflick.ai",
+    "password": "$2a$10$3TZeZlM4ZfRR3WVWLCJecOndJkcEBmq1EWqSI2FtgKrIU/0AlCyMm",
+    "role": "admin",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Advanced",
+    "interests": [],
+    "createdAt": "2026-06-16T18:13:00.506Z"
+  },
+  {
+    "_id": "u_student",
+    "name": "John Doe",
+    "email": "john@student.com",
+    "password": "$2a$10$3TZeZlM4ZfRR3WVWLCJecOwiw2Ac1dMn1nBMvi5JStGU.jRt.jnli",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-16T18:13:00.508Z"
+  },
+  {
+    "_id": "u_9j0vc3wah",
+    "name": "Test Student",
+    "email": "student_755@test.com",
+    "password": "$2a$10$tmr6Q/TscAAoUCulf3ObLePBG8AhvW/jgwBOuezsTxbUtqjxAnlYe",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T06:13:29.654Z"
+  },
+  {
+    "_id": "u_n7f1m5liu",
+    "name": "Test Student",
+    "email": "student_8075@test.com",
+    "password": "$2a$10$g7fu.S7Hocs5E49Fgh4dvej0ytApTGEKnxHYEF7KrrqtEY7akQvsa",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T06:37:40.306Z"
+  },
+  {
+    "_id": "u_38n5n0gjp",
+    "name": "Test Student",
+    "email": "student_775@test.com",
+    "password": "$2a$10$C9y6H1qZwV4t9ZWZOfmmxeL2OBKHVVlj8GCBUDRYEVEjpVc8Vw0Ym",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T08:03:42.181Z"
+  },
+  {
+    "_id": "u_7cdajg95j",
+    "name": "Test Student",
+    "email": "student_4184@test.com",
+    "password": "$2a$10$x068cHm3qVu.Bv/5SupSk.VgyJuaR8LkVteeEfXADu7OFmxIuwasy",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T08:15:10.359Z"
+  },
+  {
+    "_id": "u_hy2npxqul",
+    "name": "Test Student",
+    "email": "student_159@test.com",
+    "password": "$2a$10$FCXjOxw1qjLjOjdgg8PCF.HhOVz/4e/jgM3yXCs8GpRMLokx0bzRS",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T08:56:21.512Z"
+  },
+  {
+    "_id": "u_n89xdaocc",
+    "name": "Test Student",
+    "email": "test_1886@example.com",
+    "password": "$2a$10$Aq46bfWPRwo6q1JFicjSF.48cXx4TogZrKD.kqaEXANHYtxAfyqQ2",
+    "role": "student",
+    "selectedTrack": "",
+    "skillLevel": "",
+    "interests": [],
+    "createdAt": "2026-06-17T18:26:28.283Z"
+  },
+  {
+    "_id": "u_mentor",
+    "name": "Mentor User",
+    "email": "mentor@eduflick.ai",
+    "password": "$2a$10$ewin9bcuMK.GAhr8wVuc7e4sDNnSl6WENyp.7/hhcuXH5o9u176AC",
+    "role": "mentor",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "",
+    "interests": [],
+    "createdAt": "2026-06-17T18:29:57.601Z"
+  },
+  {
+    "_id": "u_mv6i3rhs2",
+    "name": "Test Mentor",
+    "email": "mentor_8322@example.com",
+    "password": "$2a$10$4KhRQqBUm1XEzfX3l3Q1suj5XLdanb/clI1H/Hvv/L/gEOBmurUEC",
+    "role": "mentor",
+    "selectedTrack": "",
+    "skillLevel": "",
+    "interests": [],
+    "createdAt": "2026-06-17T18:32:03.475Z"
+  },
+  {
+    "_id": "u_gidblbar9",
+    "name": "Test Progression Student",
+    "email": "test_student_3260@example.com",
+    "password": "$2a$10$BYrLxp/kKrygu4FGimFBwuAYkjCPTDhDFXa7VRl8p/hYy5oBRMIlW",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T18:48:17.047Z"
+  },
+  {
+    "_id": "u_i2aa1d690",
+    "name": "Test Progression Student",
+    "email": "test_student_2780@example.com",
+    "password": "$2a$10$o6MGYEDOG8K.jtCNv7385e1PPaeaJkEfPCgAvOzvdjv9/sV4Ev5HS",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T18:49:07.713Z"
+  },
+  {
+    "_id": "u_pn5mvhth1",
+    "name": "Test Progression Student",
+    "email": "test_student_9297@example.com",
+    "password": "$2a$10$uMti6N.B3LihC/RoaXv56Okfc41.APymLWFKW.JwM6Gtc6k5ZcZ6m",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T19:01:49.525Z"
+  },
+  {
+    "_id": "u_jq7xesxjm",
+    "name": "Test Glitch Student",
+    "email": "test_student_6618@example.com",
+    "password": "$2a$10$kUGuV6zYVD9qIx5UpzpgROgzlje4nywem0dPYmGPALts0mz7neTTS",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "createdAt": "2026-06-17T19:11:20.488Z"
+  },
+  {
+    "_id": "u_tukq8q3pn",
+    "name": "Test Quiz Student",
+    "email": "test_student_7205@example.com",
+    "password": "$2a$10$WS7qmIXnwEdSMb9BpQ44CeSImfvwR4DpbH8Cm063r6RuWYqoMStYS",
+    "role": "student",
+    "selectedTrack": "AI Engineer",
+    "skillLevel": "Beginner",
+    "interests": [
+      "Python"
+    ],
+    "createdAt": "2026-06-17T19:12:09.116Z"
+  }
+]

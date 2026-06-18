@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "slp_ej1pxxfyk",
+    "userId": "u_student",
+    "learningGoals": "",
+    "interests": [
+      "Python",
+      "Machine Learning"
+    ],
+    "completedCourses": [
+      "c1"
+    ],
+    "skillLevel": "Beginner",
+    "updatedAt": "2026-06-18T12:29:51.528Z"
+  }
+]
