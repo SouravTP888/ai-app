@@ -162,7 +162,7 @@ const VoiceMentor = () => {
     setAvatarState('thinking');
     
     try {
-      const res = await axios.post('/voice/chat', { message: queryText });
+      const res = await api.post('/voice/chat', { message: queryText });
       if (res.data.success) {
         const responseData = res.data;
         setCurrentResponse(responseData);
