@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import CourseCard from '../components/CourseCard';
-import axios from 'axios';
+import api from '../axios';
 import { 
   Mic, 
   MicOff, 
