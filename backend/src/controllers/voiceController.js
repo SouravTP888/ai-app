@@ -110,14 +110,14 @@ exports.voiceChat = async (req, res) => {
       completedCourses: completedCourseIds
     });
 
-    const apiKey = process.env.OPENAI_API_KEY;
+    const hasGroqKey = !!process.env.GROQ_API_KEY;
 
     let aiResponseText = '';
     let recommendedCourseIds = [];
 
-    if (apiKey) {
+    if (hasGroqKey) {
       try {
-        console.log('Voice AI: Calling OpenAI Chat Completions...');
+        console.log('Voice AI: Calling Groq AI Chat Completions...');
         const systemPrompt = `You are EduFlick AI Mentor, a specialized AI voice learning assistant for EduFlick LMS.
 Your goal is to help students choose courses, understand concepts, create learning paths, and improve their technical skills.
 You are talking to user: ${user.name}.
@@ -138,37 +138,19 @@ You must respond in a valid JSON object format containing the following fields:
   "recommendedCourseIds": ["Array of course IDs (strings) from the available courses that you recommend in this turn. If none, leave empty."]
 }`;
 
-        const response = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-4o-mini',
-            messages: [
-              { role: 'system', content: systemPrompt },
-              { role: 'user', content: message }
-            ],
-            response_format: { type: 'json_object' },
-            temperature: 0.7
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${apiKey}`
-            }
-          }
-        );
-
-        const resultJson = JSON.parse(response.data.choices[0].message.content.trim());
-        aiResponseText = resultJson.reply;
+        const { generateAIResponse } = require('../../services/aiService');
+        const resultJson = await generateAIResponse(message, systemPrompt);
+        aiResponseText = resultJson.reply || '';
         recommendedCourseIds = resultJson.recommendedCourseIds || [];
       } catch (err) {
-        console.error('OpenAI voice chat API call failed:', err.message);
+        console.error('Groq voice chat failed:', err.message);
         // Fallback to offline matcher
         const fallback = generateOfflineVoiceResponse(message, user, availableCourses);
         aiResponseText = fallback.reply;
         recommendedCourseIds = fallback.recommendedCourseIds;
       }
     } else {
-      console.log('Voice AI: No OpenAI key found. Running offline matching fallback...');
+      console.log('Voice AI: No Groq key found. Running offline matching fallback...');
       const fallback = generateOfflineVoiceResponse(message, user, availableCourses);
       aiResponseText = fallback.reply;
       recommendedCourseIds = fallback.recommendedCourseIds;
@@ -266,54 +248,44 @@ exports.getVoiceRecommendations = async (req, res) => {
     const targetInterests = interests || profile.interests || user.interests || [];
     const targetSkillLevel = skillLevel || profile.skillLevel || user.skillLevel || 'Beginner';
 
-    const apiKey = process.env.OPENAI_API_KEY;
     let recommendations = [];
     let reasoning = '';
 
-    if (apiKey) {
+    const hasGroqKey = !!process.env.GROQ_API_KEY;
+
+    if (hasGroqKey) {
+      const prompt = `Based on a student's profile:
+    Goal: ${targetGoal}
+    Interests: ${targetInterests.join(', ')}
+    Skill Level: ${targetSkillLevel}
+    Completed Courses: ${progressList.filter(p => p.status === 'Completed').map(p => p.courseId.title).join(', ')}
+
+    Suggest the best matching courses from the catalog below.
+    Catalog:
+    ${JSON.stringify(availableCourses, null, 2)}
+
+    Return a valid JSON object format:
+    {
+      "recommendations": ["Array of course IDs (strings)"],
+      "reasoning": "A paragraph explaining why this path/courses fit the student's requirements."
+    }`;
+
       try {
-        console.log('Voice AI Recommendation: Calling OpenAI completions...');
-        const prompt = `Based on a student's profile:
-Goal: ${targetGoal}
-Interests: ${targetInterests.join(', ')}
-Skill Level: ${targetSkillLevel}
-Completed Courses: ${progressList.filter(p => p.status === 'Completed').map(p => p.courseId.title).join(', ')}
+        console.log('Voice AI Recommendation: Calling Groq AI...');
 
-Suggest the best matching courses from the catalog below.
-Catalog:
-${JSON.stringify(availableCourses, null, 2)}
+        const { generateAIResponse } = require('../../services/aiService');
 
-Return a valid JSON object format:
-{
-  "recommendations": ["Array of course IDs (strings)"],
-  "reasoning": "A paragraph explaining why this path/courses fit the student's requirements."
-}`;
+        const systemPrompt = `You are a helpful learning recommendation assistant. Return ONLY valid JSON matching the format requested by the user.`;
+        const aiResult = await generateAIResponse(prompt, systemPrompt);
 
-        const response = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-4o-mini',
-            messages: [{ role: 'user', content: prompt }],
-            response_format: { type: 'json_object' },
-            temperature: 0.5
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${apiKey}`
-            }
-          }
-        );
+        const recIds = aiResult.recommendations || [];
+        reasoning = aiResult.reasoning || '';
 
-        const resultJson = JSON.parse(response.data.choices[0].message.content.trim());
-        const recIds = resultJson.recommendations || [];
-        reasoning = resultJson.reasoning || '';
-        
         // Populate recommendations objects
         const dbCourses = await dbService.findCourses({});
         recommendations = dbCourses.filter(c => recIds.includes((c._id || c.id || '').toString()));
       } catch (err) {
-        console.error('OpenAI recommendation failed, falling back to local recommendation logic...', err.message);
+        console.error('Groq recommendation failed:', err.message);
       }
     }
 
